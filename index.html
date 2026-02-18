@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Tic Tac Toe</title>
 </head>
-<body>
+
+<body class="retro-mode">
     <h1><span>TIC</span> TAC <span>TOE</span></h1>
-    
+
     <div id="setup-screen">
         <div class="input-group player-x">
             <label>Player 1</label>
@@ -18,10 +20,55 @@
             <label>Player 2</label>
             <input type="text" id="name-o" placeholder="Player O name" maxlength="16">
         </div>
+        <label style="font-size:.7rem">
+            <input type="checkbox" id="ai-toggle">
+            Play against CPU
+        </label>
         <button class="btn" id="start-btn">START</button>
-
+        <button id="theme-toggle" class="btn-outline">Modo retro</button>
+        <label for="ai-level">Dificultad IA</label>
+        <select id="ai-level">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard" selected>Hard</option>
+        </select>
     </div>
+
+    <div id="game-screen">
+        <div class="scoreboard">
+            <div class="player-card x" id="card-x">
+                <span class="name" id="label-x">Player X</span>
+                <span class="score" id="score-x">0</span>
+            </div>
+            <span class="sep">·</span>
+            <div class="player-card o" id="card-o">
+                <span class="name" id="label-o">Player O</span>
+                <span class="score" id="score-o">0</span>
+            </div>
+        </div>
+
+        <div id="status">Player X's Turn</div>
+
+        <div id="board">
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+        </div>
+
+        <div class="actions">
+            <button class="btn-outline" id="new-round-btn">NEW ROUND</button>
+            <button class="btn-outline" id="new-game-btn">NEW GAME</button>
+        </div>
+    </div>
+
 
     <script src="main.js"></script>
 </body>
+
 </html>
