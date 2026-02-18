@@ -304,6 +304,10 @@ const DisplayController = (() => {
 
     setupScreen.style.display = 'none';
     gameScreen.style.display  = 'flex';
+    trackEvent('start_game', {
+      vs_ai: aiToggle?.checked ? 'yes' : 'no',
+      ai_level: level
+    });
   });
 
   const handleTurnResult = (result) => {
@@ -435,3 +439,9 @@ function beep(freq = 440, duration = 0.1) {
   osc.start(ctx.currentTime);
   osc.stop(ctx.currentTime + duration);
 }
+
+const trackEvent = (name, params = {}) => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', name, params);
+  }
+};
